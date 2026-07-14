@@ -103,14 +103,23 @@ function updateHUD() {
     coinsEl.textContent = coins;
     scoreEl.textContent = score;
 }
-
-// ===== Main Game Loop =====
 function gameLoop() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     movePlayer();
+    moveGuards();
+
+    collectCoins();
+    guardLogic();
+
+    drawWalls();
+    drawCoins();
+    drawExit();
+    drawGuards();
     drawPlayer();
+
+    checkWin();
     updateHUD();
 
     requestAnimationFrame(gameLoop);
